@@ -1,0 +1,22 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  min-height: 50px;
+  background-color: black;
+}
+
+.main {
+  display: flex;
+  flex: 1 0 auto;
+}
+
+.footer {
+  display: flex;
+  min-height: 50px;
+  background-color: black;
+}
