@@ -39,18 +39,30 @@ class Cell {
   count: number;
   active: boolean;
   freeze: boolean;
-  constructor({ state = 0, count = 1, active = false, freeze = false }) {
+  born: boolean;
+  death: boolean;
+  track: boolean;
+  error: boolean;
+  constructor({
+    state = 0,
+    count = 1,
+    active = false,
+    freeze = false,
+    born = false,
+    death = false,
+    track = false,
+    error = false
+  }) {
     this.state = state;
     this.count = count;
     this.active = active;
     this.freeze = freeze;
+    this.born = born;
+    this.death = death;
+    this.track = track;
+    this.error = error;
   }
 }
-
-interface IProcessPath {
-      
-}
-
 
 class Field {
   size: number;
@@ -77,7 +89,19 @@ class Field {
     return this.arr[pos.y][pos.x];
   };
 
-  setCell = (pos: Pos, cell: Cell | number) => {
+  unactivateAll = () => {
+    for (let y = 0; y < this.size; y++) {
+      for (let x = 0; x < this.size; x++) {
+        this.setCell(new Pos(x, y), { active: false });
+      }
+    }
+  };
+
+  clone = () => {
+    return new Field({ arr: this.arr.slice(0) });
+  };
+
+  setCell = (pos: Pos, cell: Cell | object | number) => {
     if (typeof cell === "object") {
       this.arr[pos.y][pos.x] = {
         ...this.arr[pos.y][pos.x],
@@ -90,9 +114,18 @@ class Field {
     }
   };
 
+  getActive: Pos | any = () =>
+    this.arr.reduce(
+      (s: any, row, y) =>
+        row.reduce(
+          (s: any, cell, x) => (cell.active ? new Pos(x, y) : s),
+          null
+        ) || s,
+      null
+    );
+
   getRoute = (posBgn: Pos, posEnd: Pos) => {
-    this.setCell(posBgn, 3);
-    this.setCell(posEnd, 3);
+    return true;
     return this.processPath({
       field: new Field({ arr: [...this.arr] }),
       posBgn: posBgn.clone(),
@@ -100,7 +133,7 @@ class Field {
       path: []
     });
   };
-  
+
   processPath = ({
     field,
     posBgn,

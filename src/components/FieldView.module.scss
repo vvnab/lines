@@ -1,0 +1,15 @@
+.field {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 1rem;
+}
+
+.row {
+  // flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}

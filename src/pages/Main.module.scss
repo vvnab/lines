@@ -1,4 +1,7 @@
+@import "../assets/colors.scss";
+
 .root {
+  background-color: $bg-color;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -6,8 +9,9 @@
 
 .header {
   display: flex;
-  min-height: 50px;
-  background-color: black;
+  min-height: 2rem;
+  height: 10vh;
+  background-color: $side-color;
 }
 
 .main {
@@ -17,6 +21,7 @@
 
 .footer {
   display: flex;
-  min-height: 50px;
-  background-color: black;
+  min-height: 2rem;
+  height: 10vh;
+  background-color: $side-color;
 }

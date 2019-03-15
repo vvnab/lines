@@ -1,0 +1,118 @@
+@import "../assets/colors.scss";
+
+$size: 10vmin;
+$ball-size: $size * 0.55;
+$shineShiftX: 60%;
+$shineShiftY: 20%;
+
+%jump {
+  animation-name: jump;
+  animation-duration: 0.3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+}
+
+@keyframes jump {
+
+  from {
+    box-shadow: -2px 5px 8px -3px black;
+    transform: scale(1.0);
+    margin-top: 0px;
+  }
+
+  to {
+    box-shadow: -2px 11px 20px 0px black;
+    transform: scale(1.05);
+    margin-top: -6px;
+  }
+}
+
+.cell {
+  width: $size;
+  height: $size;
+  background-color: $cell-color;
+  margin: 1px;
+  // border: 1px solid white;
+  flex: 0 1 auto;
+  transition: all 0.25s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: lighten($cell-color, 2%);
+  }
+
+  &.error {
+    background-color: $cell-error-color;
+  }
+
+  &.track {
+    background-color: $cell-track-color;
+  }
+}
+
+.ball {
+  // @extend %jump;
+  position: absolute;
+  width: $ball-size;
+  height: $ball-size;
+  border-radius: 100%;
+  transition: all 0.25s;
+  box-shadow: -2px 5px 8px -3px black;
+  transform: scale(1.0);
+  // filter: blur(1px);
+
+  &.freeze {
+    width: $ball-size * 1.15;
+    height: $ball-size * 1.15;
+    border: 1px solid white;
+    filter: blur(1px);
+  }
+
+  &.active {
+    @extend %jump;
+  }
+
+  &.born, &.death {
+    width: 0;
+    height: 0;
+  }
+
+  &.ball-1 {
+    background: radial-gradient(circle at $shineShiftX $shineShiftY, $ball-1, #000);
+  }
+
+  &.ball-2 {
+    background: radial-gradient(circle at $shineShiftX $shineShiftY, $ball-2, #000);
+  }
+
+  &.ball-3 {
+    background: radial-gradient(circle at $shineShiftX $shineShiftY, $ball-3, #000);
+  }
+
+  &.ball-4 {
+    background: radial-gradient(circle at $shineShiftX $shineShiftY, $ball-4, #000);
+  }
+
+  &.ball-5 {
+    background: radial-gradient(circle at $shineShiftX $shineShiftY, $ball-5, #000);
+  }
+
+  &.ball-6 {
+    background: radial-gradient(circle at $shineShiftX $shineShiftY, $ball-6, #000);
+  }
+
+  &.ball-7 {
+    background: radial-gradient(circle at $shineShiftX $shineShiftY, $ball-7, #000);
+  }
+
+  &.ball-8 {
+    background: radial-gradient(circle at $shineShiftX $shineShiftY, $ball-8, #000);
+  }
+
+  &.ball-9 {
+    background: radial-gradient(circle at $shineShiftX $shineShiftY, $ball-9, #000);
+  }
+}
