@@ -61,7 +61,7 @@ $shineShiftY: 20%;
   border-radius: 100%;
   transition: all 0.25s;
   box-shadow: -2px 5px 8px -3px black;
-  transform: scale(1.0);
+  // transform: scale(1.0);
   // filter: blur(1px);
 
   &.freeze {
@@ -114,5 +114,8 @@ $shineShiftY: 20%;
 
   &.ball-9 {
     background: radial-gradient(circle at $shineShiftX $shineShiftY, $ball-9, #000);
+  }
+  &.ball-10 {
+    background: radial-gradient(circle at $shineShiftX $shineShiftY, $ball-10, #000);
   }
 }

@@ -8,10 +8,14 @@
 }
 
 .header {
-  display: flex;
+  // display: flex;
   min-height: 2rem;
   height: 10vh;
   background-color: $side-color;
+  color: darken(whitesmoke, 15%);
+  h1, h2, h3 {
+    text-align: center;
+  }
 }
 
 .main {
